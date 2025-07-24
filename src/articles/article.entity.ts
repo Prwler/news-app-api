@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   JoinColumn,
+  Unique,
 } from 'typeorm';
 import { AdminUserEntity } from 'src/adminUser/adminUser.entity';
 
@@ -14,23 +15,29 @@ export enum StatusEnum {
 
 export enum ArticleTypeEnum {
   NEWS = 'News',
-  OPINION = 'Opinion',
-  FEATURE = 'Feature',
+  GLOBAL = 'Global',
+  POLITICS = 'Politics',
+  MARITIME = 'Maritime',
+  BUSINESS = 'Business',
+  HEALTH = 'Health',
+  SPORTS = 'Sports',
+  VIDEO = 'Videos',
 }
 
 @Entity('articles')
+@Unique(['title'])
 export class ArticleEntity {
   @PrimaryGeneratedColumn()
   article_id: number;
 
-  @Column({ type: 'varchar', length: 255, name: 'title' })
+  @Column({ type: 'varchar', length: 255, name: 'title', unique: true }) 
   title: string;
 
   @Column({ type: 'text', name: 'content' })
   content: string;
 
-//   @Column({ type: 'enum', enum: ArticleTypeEnum, name: 'article_type' })
-//   articleType: ArticleTypeEnum;
+  @Column({ type: 'enum', enum: ArticleTypeEnum, name: 'article_type' })
+  articleType: ArticleTypeEnum;
 
   @Column({ type: 'varchar', length: 255, name: 'thumbnail', nullable: true })
   thumbnail: string;

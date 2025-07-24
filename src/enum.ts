@@ -5,8 +5,13 @@ export enum StatusEnum {
 
 export enum ArticleTypeEnum {
   NEWS = 'News',
-  OPINION = 'Opinion',
-  FEATURE = 'Feature',
+  GLOBAL = 'Global',
+  POLITICS = 'Politics',
+  MARITIME = 'Maritime',
+  BUSINESS = 'Business',
+  HEALTH = 'Health',
+  SPORTS = 'Sports',
+  VIDEO = 'Videos',
 }
 export enum DeviceTypeEnum {
   MOBILE = 'Mobile',
